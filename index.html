@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herun — Care That Moves With You</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-teal: #1A5C5E;
+            --accent-gold: #C8963E;
+            --cream: #FAF3EB;
+            --dark-slate: #2D3436;
+            --secondary-teal: #2D7F82;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark-slate);
+            background-color: var(--cream);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--cream);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(26, 92, 94, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-slate);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 92, 94, 0.85) 0%, rgba(45, 127, 130, 0.85) 100%), url('https://d2xsxph8kpxj0f.cloudfront.net/310519663400966684/fzZeZJ6VnEfxqmuJ43VjJN/herun_hero_photo-HK9JSm6SJEhKjCLJMLSCZo.webp');
+            background-size: cover;
+            background-position: center;
+            color: var(--cream);
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            width: 120px;
+            height: 120px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cpath d='M60 10 Q70 20 75 35 Q80 50 75 65 Q70 75 60 80 Q50 75 45 65 Q40 50 45 35 Q50 20 60 10' fill='none' stroke='rgba(250,243,235,0.3)' stroke-width='2'/%3E%3C/svg%3E") no-repeat center;
+            background-size: contain;
+            opacity: 0.4;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background-color: var(--accent-gold);
+            color: var(--cream);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button:hover {
+            background-color: #B8863A;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(200, 150, 62, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-teal);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--dark-slate);
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Value Proposition */
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .value-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(26, 92, 94, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(26, 92, 94, 0.2);
+        }
+
+        .value-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--primary-teal);
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--dark-slate);
+            line-height: 1.8;
+        }
+
+        /* Specialists Section */
+        .specialists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .specialist-type {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid rgba(26, 92, 94, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .specialist-type:hover {
+            background-color: var(--cream);
+            border-color: var(--accent-gold);
+        }
+
+        .specialist-type h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--primary-teal);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Email Capture Forms */
+        .forms-section {
+            background-color: var(--primary-teal);
+            color: var(--cream);
+            padding: 4rem 2rem;
+        }
+
+        .forms-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .form-box {
+            background-color: rgba(250, 243, 235, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(250, 243, 235, 0.3);
+        }
+
+        .form-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .form-box p {
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            background-color: var(--cream);
+            color: var(--dark-slate);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(200, 150, 62, 0.3);
+        }
+
+        .submit-btn {
+            background-color: var(--accent-gold);
+            color: var(--cream);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #B8863A;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-teal);
+            color: var(--cream);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--cream);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .forms-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Heron SVG styling */
+        .heron-icon {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 1rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">HERUN</div>
+        <ul>
+            <li><a href="#specialists">For Specialists</a></li>
+            <li><a href="#clients">For Clients</a></li>
+            <li><a href="#investors">For Investors</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Care That Moves With You</h1>
+        <p>Herun is a marketplace where every woman gets to choose her specialist. Direct access. Culturally competent care. All in one place.</p>
+        <button class="cta-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission">
+        <h2 class="section-title">Our Mission</h2>
+        <p class="section-subtitle">We believe every woman deserves access to specialists who understand her body, her culture, and her needs. Herun exists to close the gap in women's healthcare.</p>
+        <div class="value-props">
+            <div class="value-card">
+                <h3>Direct Access</h3>
+                <p>Connect with specialists without intermediaries. You choose who cares for you.</p>
+            </div>
+            <div class="value-card">
+                <h3>Culturally Competent</h3>
+                <p>Specialists who understand Black and Brown women's unique healthcare needs.</p>
+            </div>
+            <div class="value-card">
+                <h3>Comprehensive</h3>
+                <p>8 specialist types in one platform. Doulas, midwives, sex therapists, and more.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialists Section -->
+    <section id="specialists">
+        <h2 class="section-title">For Specialists</h2>
+        <p class="section-subtitle">Be a founding member of Herun. Get 6 months free, direct client access, marketing support, and community.</p>
+        <div class="specialists-grid">
+            <div class="specialist-type">
+                <h4>Doulas</h4>
+                <p>Birth companions</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Midwives</h4>
+                <p>Birth autonomy</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Sex Therapists</h4>
+                <p>Pleasure & wellness</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Pelvic Floor Therapists</h4>
+                <p>Strength & function</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Lactation Specialists</h4>
+                <p>Feeding support</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Sleep Coaches</h4>
+                <p>Rest & recovery</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Menopause Specialists</h4>
+                <p>Life transitions</p>
+            </div>
+            <div class="specialist-type">
+                <h4>Perinatal Mental Health Counselors</h4>
+                <p>Emotional wellness</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section id="clients">
+        <h2 class="section-title">For Clients</h2>
+        <p class="section-subtitle">Find the specialist who gets you. Browse profiles, read reviews, and book directly. Your healthcare, your way.</p>
+        <div class="value-props">
+            <div class="value-card">
+                <h3>Find Your Specialist</h3>
+                <p>Search by specialty, location, or cultural background. Find someone who understands you.</p>
+            </div>
+            <div class="value-card">
+                <h3>Book With Confidence</h3>
+                <p>Read reviews, check credentials, and book appointments directly with specialists.</p>
+            </div>
+            <div class="value-card">
+                <h3>Flexible Payment</h3>
+                <p>Sliding scale fees, flexible scheduling, and telehealth options available.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investors Section -->
+    <section id="investors">
+        <h2 class="section-title">For Investors</h2>
+        <p class="section-subtitle">Herun is a $50K seed round opportunity to build the future of women's healthcare. Join us in closing the gap.</p>
+        <div class="value-props">
+            <div class="value-card">
+                <h3>$97.25B Market</h3>
+                <p>FemTech market growing at 16.37% CAGR. Massive opportunity in women's wellness.</p>
+            </div>
+            <div class="value-card">
+                <h3>Dallas Launch</h3>
+                <p>210K+ women in target demographic. $25M in local maternal health funding.</p>
+            </div>
+            <div class="value-card">
+                <h3>Proven Model</h3>
+                <p>Two-sided marketplace with clear unit economics and expansion roadmap.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Email Capture -->
+    <section class="forms-section" id="contact">
+        <h2 class="section-title" style="color: var(--accent-gold); margin-bottom: 2rem;">Join the Movement</h2>
+        <div class="forms-container">
+            <!-- Specialists Form -->
+            <div class="form-box">
+                <h3>For Specialists</h3>
+                <p>Be a founding member. Get 6 months free and direct access to clients.</p>
+                <form onsubmit="handleSpecialistSubmit(event)">
+                    <div class="form-group">
+                        <label for="spec-name">Name</label>
+                        <input type="text" id="spec-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-email">Email</label>
+                        <input type="email" id="spec-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-specialty">Specialty</label>
+                        <input type="text" id="spec-specialty" name="specialty" placeholder="e.g., Doula, Sex Therapist" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spec-message">Tell us about you</label>
+                        <textarea id="spec-message" name="message" placeholder="Your background, experience, and why you want to join Herun"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Apply Now</button>
+                </form>
+            </div>
+
+            <!-- Investors Form -->
+            <div class="form-box">
+                <h3>For Investors</h3>
+                <p>Let's talk about the future of women's healthcare. Request our pitch deck and financial model.</p>
+                <form onsubmit="handleInvestorSubmit(event)">
+                    <div class="form-group">
+                        <label for="inv-name">Name</label>
+                        <input type="text" id="inv-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inv-email">Email</label>
+                        <input type="email" id="inv-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="inv-org">Organization</label>
+                        <input type="text" id="inv-org" name="organization" placeholder="Fund name or company">
+                    </div>
+                    <div class="form-group">
+                        <label for="inv-message">Message</label>
+                        <textarea id="inv-message" name="message" placeholder="Tell us about your investment focus"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Request Pitch Deck</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Herun. Care that moves with you.</p>
+        <p>Questions? Email us at <strong>contactus@herunhealth.com</strong></p>
+        <div class="footer-links">
+            <a href="https://www.instagram.com/herunhealth" target="_blank">Instagram</a>
+            <a href="https://www.facebook.com/herunhealth" target="_blank">Facebook</a>
+        </div>
+    </footer>
+
+    <script>
+        // Handle specialist form submission
+        function handleSpecialistSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('spec-name').value;
+            const email = document.getElementById('spec-email').value;
+            const specialty = document.getElementById('spec-specialty').value;
+            const message = document.getElementById('spec-message').value;
+            
+            // Create mailto link with form data
+            const subject = `Herun Specialist Application: ${specialty}`;
+            const body = `Name: ${name}\nEmail: ${email}\nSpecialty: ${specialty}\n\nAbout Me:\n${message}`;
+            
+            window.location.href = `mailto:contactus@herunhealth.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Handle investor form submission
+        function handleInvestorSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('inv-name').value;
+            const email = document.getElementById('inv-email').value;
+            const org = document.getElementById('inv-org').value;
+            const message = document.getElementById('inv-message').value;
+            
+            // Create mailto link with form data
+            const subject = `Herun Investor Inquiry from ${name}`;
+            const body = `Name: ${name}\nEmail: ${email}\nOrganization: ${org}\n\nMessage:\n${message}`;
+            
+            window.location.href = `mailto:contactus@herunhealth.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Reset form
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
